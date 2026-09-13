@@ -1,0 +1,32 @@
+name: daily curation
+on:
+  schedule:
+    - cron: "30 3 * * *"   # 03:30 UTC — well before the 06:00 morning slot in most of Europe; adjust
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: Run the curator
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt_file: prompts/daily.md
+          claude_args: |
+            --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch"
+            --max-turns 80
+      - name: Push
+        run: |
+          git config user.name "curator"
+          git config user.email "curator@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "daily run $(date -u +%F)"
+          git push

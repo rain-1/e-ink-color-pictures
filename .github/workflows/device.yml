@@ -1,0 +1,21 @@
+name: device events
+# The device calls the GitHub API:
+#   POST /repos/OWNER/REPO/dispatches
+#   {"event_type":"sensor","client_payload":{"temp_c":22.4,"rh":51,"batt_v":3.9}}
+#   {"event_type":"feedback","client_payload":{"slot":3,"button":"A"}}
+# with a fine-grained PAT that has contents:write on this repo.
+on:
+  repository_dispatch:
+    types: [sensor, feedback]
+permissions:
+  contents: write
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          F=${{ github.event.action }}s.jsonl
+          echo "{\"ts\":\"$(date -u +%FT%TZ)\",\"data\":${{ toJSON(github.event.client_payload) }}}" >> "$F"
+          git config user.name "device" && git config user.email "device@users.noreply.github.com"
+          git add "$F" && git commit -m "device: ${{ github.event.action }}" && git push

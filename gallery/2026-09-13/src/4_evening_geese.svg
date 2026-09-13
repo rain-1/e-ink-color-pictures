@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
+  <!-- Evening — "Geese, Going South". Linocut mood: red sky in bands, black land, a skein of geese. -->
+  <rect width="400" height="600" fill="#E01B24"/>
+  <rect y="0" width="400" height="120" fill="#123DB0"/>
+  <rect y="120" width="400" height="60" fill="#E01B24"/>
+  <rect y="180" width="400" height="40" fill="#F5D400"/>
+  <rect y="220" width="400" height="140" fill="#E01B24"/>
+  <circle cx="290" cy="235" r="58" fill="#F5D400"/>
+  <!-- land: rolling black hills, a few white cut marks for grass -->
+  <path d="M0,360 C80,330 140,380 220,350 C300,320 350,370 400,345 L400,600 L0,600 Z" fill="#000"/>
+  <path d="M0,430 C90,400 170,460 260,420 C330,390 370,430 400,415 L400,600 L0,600 Z" fill="#1E9B3C"/>
+  <path d="M0,500 C100,470 200,520 300,480 C350,460 380,490 400,485 L400,600 L0,600 Z" fill="#000"/>
+  <g stroke="#FFF" stroke-width="3" stroke-linecap="round">
+    <line x1="40" y1="520" x2="34" y2="545"/><line x1="70" y1="530" x2="66" y2="552"/>
+    <line x1="120" y1="515" x2="118" y2="540"/><line x1="330" y1="520" x2="326" y2="546"/>
+    <line x1="360" y1="512" x2="358" y2="536"/>
+  </g>
+  <!-- skein of geese, black, V formation -->
+  <g fill="#000" transform="translate(-200,-100) scale(2)">
+    <path d="M200,140 l-18,-10 l4,8 l-14,-2 l28,10 Z"/>
+    <path d="M176,158 l-18,-10 l4,8 l-14,-2 l28,10 Z"/>
+    <path d="M152,176 l-18,-10 l4,8 l-14,-2 l28,10 Z"/>
+    <path d="M128,194 l-18,-10 l4,8 l-14,-2 l28,10 Z"/>
+    <path d="M104,212 l-18,-10 l4,8 l-14,-2 l28,10 Z"/>
+    <path d="M224,158 l18,-10 l-4,8 l14,-2 l-28,10 Z"/>
+    <path d="M248,176 l18,-10 l-4,8 l14,-2 l-28,10 Z"/>
+    <path d="M272,194 l18,-10 l-4,8 l14,-2 l-28,10 Z"/>
+  </g>
+  <!-- bare tree, foreground -->
+  <g stroke="#000" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M60,600 L62,470 M62,500 L30,455 M62,520 L100,470 M30,455 L20,430 M100,470 L120,440 M62,470 L58,440"/>
+  </g>
+</svg>

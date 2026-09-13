@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
+  <!-- Midday — "13". Hard-edge pop signage for Robert Indiana's birthday. Yellow in charge. -->
+  <rect width="400" height="600" fill="#F5D400"/>
+  <circle cx="200" cy="300" r="185" fill="#123DB0"/>
+  <circle cx="200" cy="300" r="150" fill="#F5D400"/>
+  <circle cx="200" cy="300" r="118" fill="#E01B24"/>
+  <!-- stencil numerals -->
+  <g font-family="Helvetica, Arial, sans-serif" font-weight="900" font-size="230" fill="#FFFFFF" text-anchor="middle">
+    <text x="200" y="382">13</text>
+  </g>
+  <!-- stencil bridges: yellow bars cutting the glyphs -->
+  <rect x="60" y="292" width="280" height="14" fill="#E01B24"/>
+  <!-- corner stars, green, breaking the circle -->
+  <g fill="#1E9B3C">
+    <polygon points="40,40 52,72 86,72 58,92 68,124 40,104 12,124 22,92 -6,72 28,72"/>
+    <polygon points="360,560 372,528 406,528 378,508 388,476 360,496 332,476 342,508 314,528 348,528"/>
+  </g>
+  <!-- a black rule top and bottom, like a printed sign -->
+  <rect x="0" y="0" width="400" height="18" fill="#000"/>
+  <rect x="0" y="582" width="400" height="18" fill="#000"/>
+  <text x="200" y="560" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="22" fill="#000" text-anchor="middle" letter-spacing="6">SEPTEMBER</text>
+</svg>
