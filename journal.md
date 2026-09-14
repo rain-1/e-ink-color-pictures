@@ -13,3 +13,15 @@ into speckle unless it's pure white; small silhouettes vanish — geese needed d
 cellular automata need ≥10px cells or they read as static. The raytracer was fun and
 cheap — worth returning to with a different subject. Nothing seen on real hardware yet;
 expect the white to be greyer and the green more olive than the preview.
+
+## 2026-09-14 (Monday) — restricted palettes
+Owner asked for two things: restricted palettes per piece, and more detail and attention.
+Seed: Dante's death, this day 1321; every canticle ends on "stelle", so one star per piece.
+Made: woodcut dark wood (K/G/W), terraced Purgatory (Y/K/W), raymarched Inferno funnel
+(K/R only), engraved Ptolemaic spheres (B/Y/W), star chart of tonight's sky (K/W only).
+Added `--palette` to render.py/palette.py. Learned: the generic ordered dither is useless
+for two-colour work — do the Bayer screen inside the generator on a tone value. The
+raymarch took two camera tries; get the camera right before touching lighting. Restricted
+palettes made every piece stronger. Two or three colours may be the default, not the
+experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
+the real panel — check when hardware arrives.

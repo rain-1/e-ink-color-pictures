@@ -4,6 +4,7 @@
   render.py piece.svg --out 1.png [--dither fs|none|ordered]
   render.py piece.py  --out 1.png       # runs the script; it must save RGB to $OUT_RAW
   render.py photo.png --out 1.png       # any raster: fit + dither
+  render.py scene.py --out 3.png --palette black,red --dither ordered   # restricted palette
 
 For .py generators: the script is executed with the env var OUT_RAW set; it should
 write any RGB image there (any size; it gets fitted and quantised afterwards).
@@ -20,6 +21,7 @@ def main():
     p.add_argument("src"); p.add_argument("--out", required=True)
     p.add_argument("--dither", default="fs", choices=["fs", "none", "ordered"])
     p.add_argument("--rotate", action="store_true")
+    p.add_argument("--palette", help="comma-separated subset, e.g. black,red")
     a = p.parse_args()
     src = Path(a.src)
     with tempfile.TemporaryDirectory() as td:
@@ -33,7 +35,7 @@ def main():
         else:
             raw = src
         img = fit(Image.open(raw).convert("RGB"), rotate=a.rotate)
-        quantize(img, a.dither).save(a.out)
+        quantize(img, a.dither, a.palette.split(",") if a.palette else None).save(a.out)
     print("wrote", a.out)
 
 if __name__ == "__main__":

@@ -41,13 +41,23 @@ DISPLAYED = {
 }
 
 
-def _nearest(px):
-    d = ((PAL[None, :, :] - px[:, None, :]) ** 2).sum(-1)
+def _nearest(px, pal=None):
+    pal = PAL if pal is None else pal
+    d = ((pal[None, :, :] - px[:, None, :]) ** 2).sum(-1)
     return d.argmin(1)
 
 
-def quantize(img: Image.Image, dither: str = "fs") -> Image.Image:
-    """Return an RGB image using only the six palette colours."""
+def subset(names):
+    """PAL restricted to the given colour names, e.g. subset(['black','red'])."""
+    return np.array([PALETTE[n] for n in names], dtype=np.float32)
+
+
+def quantize(img: Image.Image, dither: str = "fs", names=None) -> Image.Image:
+    """Return an RGB image using only the palette colours (or the named subset)."""
+    global PAL
+    full = PAL
+    if names:
+        PAL = subset(names)
     a = np.asarray(img.convert("RGB"), dtype=np.float32)
     h, w, _ = a.shape
     if dither == "none":
@@ -74,6 +84,7 @@ def quantize(img: Image.Image, dither: str = "fs") -> Image.Image:
                     if x + 1 < w:
                         buf[y + 1, x + 1] += err * 1 / 16
     out = PAL[idx].astype(np.uint8)
+    PAL = full
     return Image.fromarray(out, "RGB")
 
 
@@ -141,6 +152,7 @@ def main():
     q = sub.add_parser("quantize"); q.add_argument("inp"); q.add_argument("out")
     q.add_argument("--dither", default="fs", choices=["fs", "none", "ordered"])
     q.add_argument("--rotate", action="store_true")
+    q.add_argument("--palette", help="comma-separated subset, e.g. black,red")
     c = sub.add_parser("check"); c.add_argument("inp")
     s = sub.add_parser("sheet"); s.add_argument("dir"); s.add_argument("--out", required=True)
     s.add_argument("--exact", action="store_true", help="show ideal colours, not the panel preview")
@@ -149,7 +161,7 @@ def main():
 
     if a.cmd == "quantize":
         img = fit(Image.open(a.inp), rotate=a.rotate)
-        quantize(img, a.dither).save(a.out)
+        quantize(img, a.dither, a.palette.split(",") if a.palette else None).save(a.out)
         print("wrote", a.out)
     elif a.cmd == "check":
         probs = check(Path(a.inp))

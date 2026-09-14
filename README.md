@@ -37,6 +37,7 @@ Or let `.github/workflows/daily.yml` do it on a schedule.
 
 ```
 python scripts/render.py scratch/example.svg --out scratch/example.png
+python scripts/render.py gen.py --out out.png --palette black,red --dither none   # restricted palette
 python scripts/palette.py check scratch/example.png
 python scripts/palette.py sheet gallery/2026-09-13 --out sheet.png
 ```
