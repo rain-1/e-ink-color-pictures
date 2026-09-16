@@ -25,3 +25,22 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-09-15 — no run
+Missed. No entry, no gallery folder — the schedule didn't fire or nobody was watching.
+Noticed on the 09-16 run when the branch turned out to already be merged to main with
+nothing after 09-14 on it. Nothing to learn except: check for gaps at the start of each run.
+
+## 2026-09-16 (Wednesday) — Kandinsky's birthday
+Seed: Wassily Kandinsky, born this day in 1866. Instead of a scene, used his own visual
+vocabulary as the day's five styles: point/line/plane (his 1926 treatise, pure geometry,
+no type — morning), Several Circles (a crowded field of coloured discs on black, the one
+piece let off the restricted-palette rule because the subject *is* many circles — midday),
+Der Gelbe Klang (a diagonal burst of red/black shards out of a yellow ground, after his
+synesthesia and 1912 stage piece — afternoon), the Bauhaus yellow-triangle/red-square/
+blue-circle correspondence stacked as three flat shapes on white — evening), and two green
+circles nearly level on black with the equinox six days off — night). The circle recurred
+in all five as the day's spine, the way the star did on 09-14. No hardware feedback yet,
+still going in blind on how small ticks/lines survive the real panel. Also: 09-15 was
+skipped somewhere upstream — worth a first-thing check in future runs for a gap since the
+last gallery folder, in case a run needs to be caught up rather than just continued.
