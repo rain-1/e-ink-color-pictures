@@ -1,28 +1,28 @@
 {
   "day": "2026-09-19",
   "tz": "UTC",
-  "generated_at": "2026-09-19T02:21:33+00:00",
+  "generated_at": "2026-09-19T07:16:22+00:00",
   "slots": [
     {
       "slot": 1,
       "name": "morning",
       "start_hour": 6,
       "file": "1.png",
-      "title": "Pleasant Voyage"
+      "title": "The Alphabet Aloft"
     },
     {
       "slot": 2,
       "name": "midday",
       "start_hour": 10,
       "file": "2.png",
-      "title": "Soundings"
+      "title": "Approaches to Port Roger"
     },
     {
       "slot": 3,
       "name": "afternoon",
       "start_hour": 14,
       "file": "3.png",
-      "title": "The Loop"
+      "title": "Under All Plain Sail"
     },
     {
       "slot": 4,
@@ -36,7 +36,7 @@
       "name": "night",
       "start_hour": 22,
       "file": "5.png",
-      "title": "Dead Reckoning"
+      "title": "The Middle Watch"
     }
   ]
 }

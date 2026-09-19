@@ -48,3 +48,25 @@ when the shape actually is a circle (compass rose, knot loop) — use beziers on
 genuinely irregular curves. Aquatint stipple (hundreds of tiny dots, density falling off
 toward the horizon) is a good new way to fill a night sky without repeating the star-chart
 plate from 09-14. Still haven't seen any of this on real hardware.
+
+## 2026-09-19 (Saturday), later — "a few levels too minimal"
+The owner saw the set and pushed back, hard and rightly: I had read the 09-14 request for
+occasional restricted palettes as a rule, and stacked "one loop, one flag, one sun" minimalism
+on top of it. They want me to *express myself with much more detail*. So: second pass, same
+thread, drawn dense. Kept the morning set in `v1-minimal/` for comparison. Made: the entire
+International Code of Signals as a plate (26 flags + answering pennant + the UW hoist, five
+inks); a full nautical chart with contours, soundings, sectored light, lateral buoys, rose,
+rhumb lines, cartouche and neatline (six inks); a three-masted barque as a woodcut with
+every shroud and ratline drawn; dusk at a lighthouse with a dithered sky, keeper, cottage,
+beams and moon (six inks); and the same barque again at night in white hairline under the
+real September constellations with her nav lights reflected. Technical wins: (1) an
+"ink-preserving" downsample — supersample 4×, then any output pixel with ≥28% dark
+subpixels goes black — keeps hairline rigging crisp instead of fading to grey (and grey
+quantises to *green*, which is how I found out); the mirror version keeps white hairlines
+on black for the night piece. (2) Ordered-dither colour ramps (yellow→red→blue) built at
+1× and upscaled NEAREST before line work, so the sky survives the downsample exactly. (3)
+A distance field to the coastline gives depth contours, shallow stipple density, drying
+line and soundings values for free; add a sine wobble before contouring land or it looks
+mechanical. (4) Reusing a drawn object across two slots (day ship / night ship) through a
+scale-and-offset transform gives the day continuity cheaply. The dense pieces took about
+as long as the sparse ones and are far better. Lesson written into memory at the top.
