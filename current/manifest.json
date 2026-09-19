@@ -1,42 +1,42 @@
 {
-  "day": "2026-09-14",
+  "day": "2026-09-19",
   "tz": "UTC",
-  "generated_at": "2026-09-14T18:06:58+00:00",
+  "generated_at": "2026-09-19T07:16:22+00:00",
   "slots": [
     {
       "slot": 1,
       "name": "morning",
       "start_hour": 6,
       "file": "1.png",
-      "title": "Selva Oscura \u2014 black, green, white"
+      "title": "The Alphabet Aloft"
     },
     {
       "slot": 2,
       "name": "midday",
       "start_hour": 10,
       "file": "2.png",
-      "title": "The Mountain \u2014 yellow, black, white"
+      "title": "Approaches to Port Roger"
     },
     {
       "slot": 3,
       "name": "afternoon",
       "start_hour": 14,
       "file": "3.png",
-      "title": "Nine Circles \u2014 black, red only"
+      "title": "Under All Plain Sail"
     },
     {
       "slot": 4,
       "name": "evening",
       "start_hour": 18,
       "file": "4.png",
-      "title": "The Spheres \u2014 blue, yellow, white"
+      "title": "Sunset Colours"
     },
     {
       "slot": 5,
       "name": "night",
       "start_hour": 22,
       "file": "5.png",
-      "title": "Riveder le Stelle \u2014 black, white only"
+      "title": "The Middle Watch"
     }
   ]
 }
