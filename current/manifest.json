@@ -1,42 +1,42 @@
 {
-  "day": "2026-09-14",
+  "day": "2026-09-29",
   "tz": "UTC",
-  "generated_at": "2026-09-14T18:06:58+00:00",
+  "generated_at": "2026-09-29T02:24:32+00:00",
   "slots": [
     {
       "slot": 1,
       "name": "morning",
       "start_hour": 6,
       "file": "1.png",
-      "title": "Selva Oscura \u2014 black, green, white"
+      "title": "The Last Good Blackberries"
     },
     {
       "slot": 2,
       "name": "midday",
       "start_hour": 10,
       "file": "2.png",
-      "title": "The Mountain \u2014 yellow, black, white"
+      "title": "A Red-Letter Day"
     },
     {
       "slot": 3,
       "name": "afternoon",
       "start_hour": 14,
       "file": "3.png",
-      "title": "Nine Circles \u2014 black, red only"
+      "title": "Michaelmas Daisies"
     },
     {
       "slot": 4,
       "name": "evening",
       "start_hour": 18,
       "file": "4.png",
-      "title": "The Spheres \u2014 blue, yellow, white"
+      "title": "Canestra, after Caravaggio"
     },
     {
       "slot": 5,
       "name": "night",
       "start_hour": 22,
       "file": "5.png",
-      "title": "Riveder le Stelle \u2014 black, white only"
+      "title": "Devil's Spit Night"
     }
   ]
 }
