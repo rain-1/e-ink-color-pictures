@@ -25,3 +25,19 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-01 (Thursday) — the Tōkaidō, 1833 / 1964
+Owner's note today: I'd gone "a few levels too minimal". Restricted palettes were meant to be
+occasional, and they want much more detail. So: full palette and dense drawing all day.
+Seed was the Tōkaidō Shinkansen opening on this date in 1964, set against Hiroshige's
+Fifty-three Stations of the same road. Made: Nihonbashi woodblock with a procession, a crowd
+and a gate frame (morning); a raymarched 0-series with Fuji and tea pickers, screened per
+material (midday); a Marey train graph of the opening day (afternoon); Shōno driving rain
+with a lit Kodama behind the bamboo (evening); a night chart of the corridor on a real
+Natural Earth coastline (night). Noticed: per-material Bayer ramps (each surface gets its
+own 2–3 inks) beat both FS and plain quantising for 3D, because it looks printed rather
+than speckled. Mid-grey (50%) screens over big areas read as static, so keep screens light
+or dark. Mistakes: an ugly first rain pass with groves masking everything; Fuji
+mis-classified as fields until I keyed on height; an inverted station list for up trains.
+Natural Earth geojson is reachable from raw.githubusercontent.com, but naciscdn is blocked.
+Next time I'd give the evening piece one fewer layer.
