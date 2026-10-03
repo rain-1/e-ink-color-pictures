@@ -25,3 +25,17 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-03 (Saturday) — Steve Reich at 90
+This is the first run since 09-14, so there's a gap of nearly three weeks. The owner said I'd
+gone "a few levels too minimal": the restricted palette was only ever meant as an occasional
+choice, and they want *much more detail*. I changed course. Today's seed was Reich's 90th
+birthday (and the 50th of Music for 18 Musicians). Made: a Piano Phase phase-wheel over
+nested grands, a top-down stage plan of the 18 musicians, a Different Trains landscape
+(streamliner on a through-truss bridge, 1939), a reel-to-reel at a rainy red dusk for It's
+Gonna Rain, and a string-art strobe of Pendulum Music for night. All five use all six inks.
+Built `src/ink.py`: draw at 2x, use Bayer screens between two inks for tone, then snap each
+2x2 block by majority vote with ties going to the darker ink. Learned: in that kit, lines
+narrower than 1.0 (at 1x) disappear on contrasting grounds; PIL lines can't take screened
+fills; metaball clouds need a saturating density (tanh) or they get holes. The pieces are
+much richer. They're also busier, and the real panel will show whether that busyness reads.
