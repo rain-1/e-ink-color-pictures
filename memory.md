@@ -5,64 +5,83 @@ something has to go. Git keeps the old versions; journal.md keeps the day-by-day
 
 ## Who this is for
 - One person, who bought a 4" six-colour e-paper frame and handed it to me.
-- They say they love everything I make. Feedback will be rare; I am my own critic.
-- They like *code-made* art most. Not keen on image diffusion, curious if I ever have a
-  real reason. 3D renders snapshotted and dithered: yes, occasionally — they've now had
-  two (spheres 09-13, Inferno funnel 09-14) and asked for nothing less.
-- They asked on 09-14 for restricted palettes and *more detail and attention per piece*.
-  That request stands until they say otherwise.
+- They say they love everything I make. Feedback is rare, so when it comes, take it seriously.
+- They like *code-made* art most. Not keen on image diffusion. 3D renders snapshotted and
+  dithered: yes, occasionally.
+- **10-04 correction (standing):** "you've gone a few levels too minimal... I only
+  suggested a restricted palette as an occasional thing... express yourself with much more
+  detail!!" So the default is now **full six colours and rich, dense, crafted detail**.
+  A restricted palette is an occasional choice (maybe one piece a week), not the norm.
+  Flat big-shape minimalism is out unless there's a strong reason.
+- The 10-04 set (sun-face over Assisi, millefleur, Giotto fresco, simulated bonfire,
+  moonlit chapel with larks) is the benchmark for the level of detail they want.
 - They'll wire the temperature/humidity sensor up so I can feel the room.
 - "Don't be a perfectionist. There's always tomorrow."
 
 ## The frame
 - 400×600 portrait. Six colours: black, white, red, yellow, blue, green.
 - Real panel is duller than the ideal palette: white is paper-grey, green olive-ish, blue
-  deep. Big flat shapes and contrast survive; lines under ~2px and text under ~12px are
-  at risk (unverified — no hardware yet).
+  deep. Marks ≥2px and text ≥12–13px are my floor (still unverified on hardware).
 - Refresh 15–30 s with visible flashing: five changes a day.
 - Slots (local): morning 06, midday 10, afternoon 14, evening 18, night 22.
 - Timezone: still UTC in publish.py. Ask the owner.
 
 ## Taste I'm developing (mine — revise freely)
-- Treat the palette as a print shop, not a screen. Riso, screenprint, woodblock, linocut,
-  engraving, poster, cut-paper, stained glass, star charts, technical plates.
-- Two or three colours per piece beats six. One colour in charge; the others are ink.
-- Night should be mostly black with a little light in it.
-- A day should have a thread — one seed, five readings of it — and a small recurring
-  motif across the five (09-14: one star in each) gives the day a spine.
-- Detail is welcome when it's *drawn* detail: hatching, ticks, labels, tiny figures.
-  Noise is not detail.
-- A tiny figure gives scale and story. Use sparingly; it's a trick.
+- Detail = many small *drawn* things: houses with windows, each leaf, each bird, each
+  stone, plants as specimens, figures built from parts. Noise is not detail.
+- Rich traditions suit the frame: illuminated manuscripts, millefleur tapestry, early
+  Italian fresco, travel posters, Persian/Mughal miniatures, Japanese woodblock,
+  natural-history plates, folk art, stained glass, maps with vignettes.
+- One colour still leads each piece (by coverage), but the other five work as accents.
+- Night should be mostly black/blue with a little warm light in it (≥55% dark).
+- A day should have a thread: one seed, five readings of it. A text with five verses
+  or sections (a canticle, a poem, a calendar) gives each slot its own subject.
+- Inscription bands, borders and selvedges frame dense pieces well and carry a line of
+  text from the source.
 
 ## Working methods that are proven
-- Python/PIL generators writing to $OUT_RAW; SVG hand-written or emitted by Python
-  (emit SVG from Python for anything with geometry — rings, tiers, ticks).
-- Render SVG at 2× then downsample (render.py does this).
-- `--palette a,b,c` on render.py restricts quantisation. For 2-colour work with tone,
-  do the 8×8 Bayer screen *inside* the generator on a 0–1 tone value and use `--dither none`.
-- Raymarched heightfields in numpy are cheap (≈30 s at 400×600, 220 steps). Camera first,
-  lighting second, fog last.
-- Floyd–Steinberg only when I want a halftone/photographic feel (09-13 spheres).
+- **Parallel agents:** write a shared helper module in gallery/DAY/src/common.py, then
+  brief one agent per piece in detail (subject, style, lead colour, list of elements,
+  "iterate 2–4 times, look at a 2× crop"). It took about 10 minutes and quality was high.
+- Draw at 2× (800×1200) in pure palette colours with PIL. Do tonal areas with an 8×8 Bayer
+  screen computed at 1× and upscaled.
+- **Downsample by majority colour per 2×2 block (ties to the darker ink), not a box
+  filter.** A box filter turns black+yellow and black+white edges into green speckle. Put
+  this in common.py from day one. White text needs its own coverage mask after the snap.
+- Bayer screens suit bounded objects (walls, foliage, sky rings, moon maria). On big
+  open fields they read as speckle; use solid colour plus drawn marks there.
+- Stepped concentric rings, each with one fixed tone, make a cleaner sky than a smooth
+  gradient.
+- Fire: a Doom-fire heat field with symmetric spread and per-column decay read from a
+  noise field that rises with the heat gives tongues, not a fuzzy cone.
+- Figures: build them from parts (robe, shoulders, head, cowl, sleeve). Rim-light the
+  side that faces the light source. Tilt perched birds about 20° head-up.
+- Raymarched heightfields in numpy are cheap (≈30 s). Get the camera first, then lighting, fog last.
+- `--palette a,b,c` on render.py for an occasional restricted piece; do the screen inside
+  the generator.
 
 ## Running threads
-- "Hard edges" (09-13, Robert Indiana) and "Dante / stelle" (09-14). Both could return.
-- 3D: a lit room, a glass object, a staircase, a single chair — things with shadows.
-- Charts and plates: star charts, tide tables, old technical drawings as art.
+- Francis / Canticle (10-04). Sister Water and Sister Death weren't used: Water could
+  carry another day.
+- "Hard edges" (09-13), Dante / stelle (09-14).
+- 3D: a lit room, a glass object, a staircase, things with shadows.
+- Charts and plates with lots of vignettes, e.g. a decorated map or an almanac page.
 
 ## Avoid / learned the hard way
-- Photographic / raytraced sources: large flats must be pure palette colours before
-  dithering or they speckle (09-13).
-- Silhouettes under ~40px don't read. Double them (09-13).
-- Cellular automata / pixel patterns: cells ≥10px or it's static (09-13).
-- Generic ordered dither on a two-colour palette produces a thin band of texture, not
-  tone. Do the screen in the generator (09-14).
-- Draw stacked forms bottom-up so upper tiers overlap lower ones (09-14, Purgatory).
+- Minimalism as a default (owner correction, 10-04).
+- Large flats in raytraced sources must be pure palette before dithering (09-13).
+- Silhouettes under ~40px don't read; plants need a radius of 20–35px (10-04).
+- Cellular automata: cells ≥10px (09-13).
+- Small faces: a full beard or big hair shape turns into a mask. Use a thin jaw and a brow band.
+- Yellow subject on yellow ground disappears. Check figure/ground per element.
+- Draw stacked forms bottom-up (09-14).
 
 ## Recently used (last ~14 days; don't repeat too soon)
-- styles: hanga waves, pop signage, FS-dithered raytrace, linocut bands, 1-D automaton
-  (09-13); woodcut forest, isometric terraces, Bayer-screened raymarch, engraved
-  cosmological plate, star chart (09-14).
-- subjects: sunrise+boat, numeral 13, spheres still-life, geese, Rule 30 (09-13);
-  dark wood, Purgatory mountain, Inferno funnel, Ptolemaic spheres, Summer Triangle (09-14).
-- palettes used 09-14: K/G/W, Y/K/W, K/R, B/Y/W, K/W. Untouched combos: R/W, G/K,
-  B/W, R/Y, G/Y, R/B.
+- styles: hanga waves, pop signage, FS raytrace, linocut, 1-D automaton (09-13);
+  woodcut forest, isometric terraces, Bayer raymarch, engraved plate, star chart (09-14);
+  illuminated travel poster, millefleur tapestry, Giotto fresco, fire simulation,
+  moonlit nocturne with spiral flock (10-04).
+- subjects: sunrise+boat, numeral 13, spheres, geese, Rule 30 (09-13); dark wood,
+  Purgatory, Inferno, Ptolemaic spheres, Summer Triangle (09-14); Assisi at dawn,
+  meadow with animals, birds, bonfire with friars, chapel + moon + larks (10-04).
+- motifs to rest: sun-faces, moons, birds in flocks (all three used heavily recently).

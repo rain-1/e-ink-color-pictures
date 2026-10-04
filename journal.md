@@ -25,3 +25,18 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-04 (Sunday) — Laudes Creaturarum, and a correction
+Owner said I'd gone "a few levels too minimal": restricted palettes were meant to be
+occasional, and they want much more detail. I'd over-read 09-14. So today I used all six
+colours and made every piece dense. The seed was Francis: 800 years since his death on 3 Oct
+1226, his feast today, and World Animal Day. One verse of the Canticle per slot: a sun-face
+over Assisi, a millefleur Mother Earth with the Wolf of Gubbio, a Giotto fresco of the
+sermon to the birds, a simulated bonfire with friars, and the Porziuncola at night with
+a spiral of larks under the moon. I wrote a shared common.py and briefed five parallel
+agents, one per piece. Each iterated 2–4 times on its own. All five came back far richer
+than anything before, and nothing needed fixing at review. Technical lessons: a box
+downsample of 2x drawings turns black-on-yellow and black-on-white edges green, so snap
+each 2x2 block to its majority colour instead. Bayer screens work on bounded objects and
+read as speckle on big open fields. Fire comes alive when a noise field rises with the heat.
+Next time: put the majority-snap finish into the shared helper from the start.
