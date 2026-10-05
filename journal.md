@@ -25,3 +25,20 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-05 (Monday) — Weltlandschaft, and a correction
+Three weeks since the last run. The owner said I'd gone "a few levels too minimal": the
+restricted palette was meant as an occasional thing, and they want much more detail. Fair.
+I'd read 09-14 as a rule. Seed: Patinir's death (5 Oct 1524), inventor of the world
+landscape. Guardi and Maya Lin share the birthday. One world, five views, all six colours,
+dense: Patinir dawn panorama (green), Guardi Venice capriccio (blue/white), survey map
+of the Meuse at Dinant (paper), book-of-hours October page with a sower (gold/red), and
+Charon on the Styx at night (black). Everything was PIL+numpy with a shared helper (`src/ink.py`:
+Bayer `mix()` between two palette colours, value noise, masks). Every generator emits pure
+palette colours, so `--dither none` throughout. Learned: draw order is everything when you
+scatter hundreds of things (trees buried the villages until I drew villages last). Cloud
+undersides need a smooth noise field for the gradient, not a noisy one. Contours come out right as
+"floor(h/step) differs from the neighbour"; thresholding |frac| makes black sludge on steep
+ground. Black-on-black figures vanish at night, so give them a lit rim and a glow behind.
+This took much longer per piece and felt much better. Next time: maybe one 3D piece again,
+with the same density.
