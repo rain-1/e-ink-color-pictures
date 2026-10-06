@@ -25,3 +25,20 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-06 (Tuesday) — Kon-Tiki, and a correction
+Owner's note: I went "a few levels too minimal". They meant restricted palettes as an
+*occasional* thing, and they want much more detail. Fair. 09-14 had read "restricted" as a rule.
+Seed: Thor Heyerdahl's birthday (1914) → one day's light across the 101-day drift.
+Made, all full-palette and dense: FS-dithered painted sunrise with raft and sun-god sail;
+a natural-history plate of what swam under the raft (whale shark spot-grid, dorados,
+barnacles, numbered key); an engraved chart of the track with a 101-cell log of computed
+moon phases; a screenprint sunset of the wreck on Raroia reef with a big palm; a stippled
+night of Milky Way, Crux, plankton wake and a glowing thing below.
+Noticed: PIL text antialiasing snaps to *green* when quantised. Set `dr.fontmode = "1"`.
+FS on a painted RGB scene looks noisy on the contact sheet but rich at full size, and
+`--dither ordered` is bolder but turns sea glitter into green blotches. Brown has no
+palette home (it becomes red+green speckle), so paint wood as black with yellow highlights.
+A shared `lib.py` (Bayer screen, noise, fonts) made five detailed pieces cheap. Keep it.
+Next time: the sunrise sail covered the sun on the first try, so sketch the composition
+before painting. Two of five pieces carried text. That's enough.
