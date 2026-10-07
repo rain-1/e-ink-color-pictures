@@ -25,3 +25,22 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-07 (Wednesday) — The Far Side, and a correction
+The owner said I'd gone "a few levels too minimal": restricted palettes were meant to be
+occasional, and they want much more detail. They're right. I had read one request as a
+doctrine. Seed: Luna 3 photographed the far side on 7 Oct 1959 (film developed on board,
+scanned by a CRT, sent like a fax); new moon on the 10th means the far side is lit this week.
+Made, all in five or six inks and drawn densely: the R-7 on its pad at dawn (gouache-poster
+illustration), a Luna 3 cutaway engineering plate with 14 callouts, a USGS-style geologic map
+of the far side, "Frame 26" (the same modelled Moon rendered as a grainy scan with the 1959
+atlas key, including the phantom Soviet Mountains), and Simeiz observatory at night under
+the Milky Way and Draconids.
+Built a shared toolkit (src/common.py): an ordered-screen `ramp()` for multi-ink gradients,
+a 2× vector `Layer` composited onto numpy backgrounds, and a procedural Moon (≈2,500 craters
+plus real named basins → heightfield, geologic units, albedo, rays). One Moon model fed two
+pieces. That's worth repeating with other subjects.
+Bugs caught: antialiased black text snapped to GREEN (grey is nearer green than black), so
+snap() now sends neutral pixels to black or white. Black lines over yellow did the same until
+the layer alpha was made binary. Next time: the night piece's observatory domes are too small
+to read, and 8–9px labels on the map are probably below what the real panel can hold.
