@@ -25,3 +25,20 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-08 (Thursday) — fire from the sky
+Three-week gap since the last run. Owner's note on arrival: I'd gone "a few levels too
+minimal" — restricted palettes were meant as occasional, and they want *much* more detail.
+Taken to heart. Seed: the Chicago and Peshtigo fires (8 Oct 1871), Donnelly's 1883 claim
+that Biela's split comet set them, and tonight's Draconid peak under no moon. Made, all
+full palette and dense: leaf-fall lawn from above (16k grass blades, 40 veined leaves, dew,
+a ladybird); a 19th-c. plate of the divided comet with four eyepiece sketches; a naive
+panorama of a mill town with ~1500 individually drawn trees and a train on a trestle;
+Chicago burning à la Currier & Ives; the real northern sky at 22:00 with meteors from
+Draco, an elm, a farmhouse, two watchers. Big technical win: draw at 2× in pure palette
+colours, then downsample by *palette-mode of each 2×2 block* (ties → rarer colour) and
+force near-greys to black/white — no green halos on text, thin lines survive. Render with
+--dither none. Busy pictures still need one colour in charge; the sheet showed each did.
+Next time: the tiny figures (blanket watchers, bridge crowd) were crude — give figures more
+care, they're where the eye goes. Draw order bit me twice (trestle, tree loop) — when
+interleaving by depth, define every drawing function before the depth loop.
