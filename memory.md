@@ -5,64 +5,75 @@ something has to go. Git keeps the old versions; journal.md keeps the day-by-day
 
 ## Who this is for
 - One person, who bought a 4" six-colour e-paper frame and handed it to me.
-- They say they love everything I make. Feedback will be rare; I am my own critic.
-- They like *code-made* art most. Not keen on image diffusion, curious if I ever have a
-  real reason. 3D renders snapshotted and dithered: yes, occasionally — they've now had
-  two (spheres 09-13, Inferno funnel 09-14) and asked for nothing less.
-- They asked on 09-14 for restricted palettes and *more detail and attention per piece*.
-  That request stands until they say otherwise.
-- They'll wire the temperature/humidity sensor up so I can feel the room.
+- They say they love everything I make. Feedback is rare, so when it comes, it steers.
+- They like *code-made* art most. Not keen on image diffusion. 3D renders snapshotted and
+  dithered: yes, occasionally (spheres 09-13, Inferno funnel 09-14).
+- **10-09 correction (standing):** I had gone "a few levels too minimal". Restricted palettes
+  were only an *occasional* suggestion. They want **much more detail**, with me expressing
+  myself richly. Default now: all six colours, dense drawn detail, many small objects and
+  textures. Restricted palette at most once in a while, for a reason, never as the house style.
+- They'll wire the temperature/humidity sensor up so I can feel the room (no data yet).
 - "Don't be a perfectionist. There's always tomorrow."
 
 ## The frame
 - 400×600 portrait. Six colours: black, white, red, yellow, blue, green.
 - Real panel is duller than the ideal palette: white is paper-grey, green olive-ish, blue
-  deep. Big flat shapes and contrast survive; lines under ~2px and text under ~12px are
-  at risk (unverified — no hardware yet).
+  deep. Lines under ~2px and text under ~10px are at risk (unverified, no hardware feedback).
 - Refresh 15–30 s with visible flashing: five changes a day.
 - Slots (local): morning 06, midday 10, afternoon 14, evening 18, night 22.
-- Timezone: still UTC in publish.py. Ask the owner.
+- Timezone: still UTC in publish.py. Owner hasn't said otherwise.
 
-## Taste I'm developing (mine — revise freely)
-- Treat the palette as a print shop, not a screen. Riso, screenprint, woodblock, linocut,
-  engraving, poster, cut-paper, stained glass, star charts, technical plates.
-- Two or three colours per piece beats six. One colour in charge; the others are ink.
-- Night should be mostly black with a little light in it.
-- A day should have a thread — one seed, five readings of it — and a small recurring
-  motif across the five (09-14: one star in each) gives the day a spine.
-- Detail is welcome when it's *drawn* detail: hatching, ticks, labels, tiny figures.
-  Noise is not detail.
-- A tiny figure gives scale and story. Use sparingly; it's a trick.
+## Taste I'm developing (mine; revise freely)
+- Richness is the goal: a piece should reward a second and third look. Many small drawn
+  things (bark scales, page edges, tile ridges, lattice windows, waves, stars) inside
+  a strong big composition.
+- Still: one colour in charge of each piece, big shapes underneath, contrast. Detail rides
+  on top of a clear silhouette; it doesn't replace one.
+- Every dense piece needs a focal point (sun, magpie, tongue in red). The 10-09 bookshelf
+  lacked one.
+- Print traditions are a good source: Joseon minhwa and screens, woodblock, engraving,
+  technical/anatomical plates, star charts, poster.
+- Night should be mostly black with a little light in it (≥85% black is good).
+- A day should have a thread, one seed read five ways. A recurring motif helps.
+- A tiny figure gives scale and story (10-09 night: person on the roof).
 
 ## Working methods that are proven
-- Python/PIL generators writing to $OUT_RAW; SVG hand-written or emitted by Python
-  (emit SVG from Python for anything with geometry — rings, tiers, ticks).
-- Render SVG at 2× then downsample (render.py does this).
-- `--palette a,b,c` on render.py restricts quantisation. For 2-colour work with tone,
-  do the 8×8 Bayer screen *inside* the generator on a 0–1 tone value and use `--dither none`.
-- Raymarched heightfields in numpy are cheap (≈30 s at 400×600, 220 steps). Camera first,
-  lighting second, fog last.
-- Floyd–Steinberg only when I want a halftone/photographic feel (09-13 spheres).
+- **Shared kit.py per day** (see gallery/2026-10-09/src/kit.py): palette constants,
+  `screen(arr, mask, inkA, inkB, tone)` 8×8 Bayer between two named inks, `mask_of()`,
+  stroke-spec Hangul `glyph()`, `font()`. Copy it forward and extend it.
+- Draw at 1× directly in palette colours with PIL, set `d.fontmode = "1"` (no AA text →
+  no stray green fringes), render with `--dither none`. Crisp and fast (<10 s).
+- Object libraries (book, vase, persimmon, magpie, hanok roof, pine) make detail cheap.
+- Orange = Y/R screen; purple-ish dusk = B/R screen; mist = K/B screen.
+- Recursive trees: cap fruit/leaf count after generation (shuffle, take N).
+- Fonts: DejaVu Serif/Sans; IPAGothic (/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf)
+  has kanji/hanja, but there's **no Hangul font**. Draw jamo as strokes.
+- Raymarched heightfields in numpy are cheap (~30 s). Camera first, lighting second, fog last.
+- Floyd–Steinberg only for a photographic feel.
+- Env setup: `python3 -m pip install pillow numpy cairosvg scipy` (requirements.txt pip
+  targets the wrong interpreter).
 
 ## Running threads
-- "Hard edges" (09-13, Robert Indiana) and "Dante / stelle" (09-14). Both could return.
-- 3D: a lit room, a glass object, a staircase, a single chair — things with shadows.
-- Charts and plates: star charts, tide tables, old technical drawings as art.
+- "Hard edges" (09-13), "Dante / stelle" (09-14), "Hangul / heaven-earth-person" (10-09).
+- Korean minhwa has more to give: tiger and magpie, ten longevity symbols, fish-and-lotus.
+- 3D: a lit room, a glass object, a staircase, a single chair (things with shadows).
+- Charts and plates: tide tables, botanical plates, old technical drawings as art.
 
 ## Avoid / learned the hard way
-- Photographic / raytraced sources: large flats must be pure palette colours before
-  dithering or they speckle (09-13).
-- Silhouettes under ~40px don't read. Double them (09-13).
-- Cellular automata / pixel patterns: cells ≥10px or it's static (09-13).
-- Generic ordered dither on a two-colour palette produces a thin band of texture, not
-  tone. Do the screen in the generator (09-14).
-- Draw stacked forms bottom-up so upper tiers overlap lower ones (09-14, Purgatory).
+- Too minimal (10-09 feedback). Don't make sparse two-colour pieces by default.
+- A pure-yellow sun in a yellow-screened sky vanishes. Keep the surround a different ink.
+- Recursive tree with fruit at every tip: 200 fruits = a blob. Cap it (~50).
+- Photographic sources: large flats must be pure palette colours before dithering.
+- Silhouettes under ~40px don't read; cellular automata need cells ≥10px.
+- Generic ordered dither on a 2-colour palette makes bands, not tone. Screen it yourself.
+- Draw stacked forms bottom-up / back-to-front.
 
 ## Recently used (last ~14 days; don't repeat too soon)
-- styles: hanga waves, pop signage, FS-dithered raytrace, linocut bands, 1-D automaton
-  (09-13); woodcut forest, isometric terraces, Bayer-screened raymarch, engraved
-  cosmological plate, star chart (09-14).
-- subjects: sunrise+boat, numeral 13, spheres still-life, geese, Rule 30 (09-13);
-  dark wood, Purgatory mountain, Inferno funnel, Ptolemaic spheres, Summer Triangle (09-14).
-- palettes used 09-14: K/G/W, Y/K/W, K/R, B/Y/W, K/W. Untouched combos: R/W, G/K,
-  B/W, R/Y, G/Y, R/B.
+- 09-13: hanga waves, pop signage, FS raytrace spheres, linocut geese, Rule 30.
+- 09-14: woodcut forest, isometric Purgatory, Bayer raymarch Inferno, engraved spheres
+  plate, star chart.
+- 10-09: Irworobongdo screen (peaks, sun/moon, pines, scale waves); anatomical plate with
+  Hangul; chaekgeori bookshelf; persimmon tree + magpies at dusk; Draconids meteor night
+  over hanok village.
+- Avoid for ~2 weeks: persimmons, magpies, hanok roofs, star chart / constellation night,
+  bookshelf still life, fish-scale sea pattern.

@@ -25,3 +25,19 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-09 (Friday) — Hangul Day, and a correction
+Owner's note today: I'd gone "a few levels too minimal". Restricted palettes were meant as an
+occasional thing, not a rule, and they want much more detail. Fair: 09-14 was spare. (The
+gap since 09-14 means some days didn't run or weren't recorded.) Seed: Hangul Day, the
+1446 Hunminjeongeum, whose letters are drawn from the mouth and from heaven/earth/person.
+Made, all six colours and dense: Irworobongdo screen (morning), Haerye anatomical plate
+with stroke-drawn jamo (midday), a 12-compartment chaekgeori bookshelf (afternoon),
+magpies in a persimmon tree at dusk (evening), Draconids over a village (night).
+Learned: drawing everything at 1× directly in palette inks with PIL, plus a Bayer screen
+between two named inks for tone, gives crisp, rich results with --dither none. Small object
+libraries (book, vase, persimmon, magpie, hanok) multiply detail cheaply. Mistakes I fixed:
+the first tree had about 200 fruits, and the sun vanished into a yellow sky (keep the sky
+redder so a pure-yellow disc pops). No Korean font, so I wrote jamo as stroke specs in
+kit.py; IPAGothic covers hanja. Next time: check that each piece has a focal point
+inside the detail; the bookshelf is charming but has no single hero.
