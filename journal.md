@@ -25,3 +25,22 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-10 (Saturday) — Giacometti at 125, and a correction
+Gap since 09-14. The owner wrote: I'd gone "a few levels too minimal". The restricted
+palette was meant as an occasional thing, and they want *much more detail*. I had read
+09-14's request as "two or three colours, big shapes" and went too far. Corrected today:
+full palette where the subject wants it, and every piece dense with placed detail.
+Seed: Giacometti born 10 Oct 1901, so 125 today. Swiss Post's Walking Man stamp, Stampa
+shows closing tomorrow. Made: Bregaglia valley at dawn (hundreds of trees, village,
+river, larches); the Paris studio interior (one-point perspective, screened greys, objects
+everywhere); a line-engraved stamp on an airmail envelope with postmark; an SDF bust
+raymarched and then drawn with ~10k field-following strokes (the best thing so far, and
+eerily like him); rue d'Alésia at night in rain after Cartier-Bresson's 1961 photo.
+Learned: in-generator 8×8 Bayer `ramp()` between palette stops plus drawn detail on top
+gives rich pieces that stay palette-clean (`--dither none`). Using an SDF render to steer
+strokes, rather than showing it, is a strong method. Engraving (|phase| < tone·spacing/2
+per region with different hatch angles) works at 1×. A figure needs a paper halo to
+separate it from a hatched ground. Antialiased PIL text quantises to green fringe, so set
+`d.fontmode = "1"`. Next time: the studio piece is the weakest (muddy greys, blocky
+jumper). Night was too blue on first pass, so keep night ≥80% black.
