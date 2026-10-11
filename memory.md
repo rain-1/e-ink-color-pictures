@@ -5,64 +5,72 @@ something has to go. Git keeps the old versions; journal.md keeps the day-by-day
 
 ## Who this is for
 - One person, who bought a 4" six-colour e-paper frame and handed it to me.
-- They say they love everything I make. Feedback will be rare; I am my own critic.
-- They like *code-made* art most. Not keen on image diffusion, curious if I ever have a
-  real reason. 3D renders snapshotted and dithered: yes, occasionally — they've now had
-  two (spheres 09-13, Inferno funnel 09-14) and asked for nothing less.
-- They asked on 09-14 for restricted palettes and *more detail and attention per piece*.
-  That request stands until they say otherwise.
-- They'll wire the temperature/humidity sensor up so I can feel the room.
+- They say they love everything I make. Feedback is rare, so take it seriously when it comes.
+- They like *code-made* art most. Not keen on image diffusion. 3D renders dithered: welcome
+  occasionally.
+- **10-11 correction, standing:** "you've gone a few levels too minimal". Restricted
+  palettes were only ever an *occasional* suggestion. They want **much more detail**, so I
+  should express myself fully. Default = all six colours, dense, drawn, rich. A restricted
+  palette is now the exception (≤1 piece a day, and only when the idea demands it).
 - "Don't be a perfectionist. There's always tomorrow."
 
 ## The frame
 - 400×600 portrait. Six colours: black, white, red, yellow, blue, green.
-- Real panel is duller than the ideal palette: white is paper-grey, green olive-ish, blue
-  deep. Big flat shapes and contrast survive; lines under ~2px and text under ~12px are
-  at risk (unverified — no hardware yet).
+- Real panel is duller: white is paper-grey, green olive-ish, blue deep. Lines under ~2px
+  and text under ~11px are at risk (still unverified — no hardware feedback yet).
 - Refresh 15–30 s with visible flashing: five changes a day.
 - Slots (local): morning 06, midday 10, afternoon 14, evening 18, night 22.
 - Timezone: still UTC in publish.py. Ask the owner.
 
-## Taste I'm developing (mine — revise freely)
-- Treat the palette as a print shop, not a screen. Riso, screenprint, woodblock, linocut,
-  engraving, poster, cut-paper, stained glass, star charts, technical plates.
-- Two or three colours per piece beats six. One colour in charge; the others are ink.
-- Night should be mostly black with a little light in it.
-- A day should have a thread — one seed, five readings of it — and a small recurring
-  motif across the five (09-14: one star in each) gives the day a spine.
-- Detail is welcome when it's *drawn* detail: hatching, ticks, labels, tiny figures.
-  Noise is not detail.
-- A tiny figure gives scale and story. Use sparingly; it's a trick.
+## Taste (mine — revise freely)
+- Richness first: scenes with many parts — architecture, figures, foliage, water,
+  reflections, patterned cloth, labels. A piece should reward a second and third look.
+- Still: one colour in charge of the composition (gold screen, blue dusk, black night),
+  even when all six appear.
+- Print-shop idioms still guide me: ukiyo-e, shin-hanga, herbarium/botanical plates,
+  emaki, posters, engraving. Now with full colour and density.
+- A day has a thread (one seed, five readings) and a small recurring motif (09-14 a star,
+  10-11 a maple leaf in every piece).
+- Tiny figures give scale and story; three on a bridge worked at 2× canvas.
+- Night: mostly black, lit by something in the scene (fire, windows, moon).
 
 ## Working methods that are proven
-- Python/PIL generators writing to $OUT_RAW; SVG hand-written or emitted by Python
-  (emit SVG from Python for anything with geometry — rings, tiers, ticks).
-- Render SVG at 2× then downsample (render.py does this).
-- `--palette a,b,c` on render.py restricts quantisation. For 2-colour work with tone,
-  do the 8×8 Bayer screen *inside* the generator on a 0–1 tone value and use `--dither none`.
-- Raymarched heightfields in numpy are cheap (≈30 s at 400×600, 220 steps). Camera first,
-  lighting second, fog last.
-- Floyd–Steinberg only when I want a halftone/photographic feel (09-13 spheres).
+- Generators draw on an **800×1200 canvas (2×)** with PIL, write to $OUT_RAW; render.py
+  fits and quantises. Use `--dither fs` for full-colour pieces.
+- A per-day `src/lib.py` of helpers (leaf shapes, vgrad, value_noise, colour constants)
+  makes dense work cheap. Copy the 10-11 lib.py as a starting point.
+  It has: maple_leaf(cx,cy,size,angle,lobes,...), maple_veins, draw_maple, vgrad,
+  value_noise, fonts (DejaVu/Liberation; there are NO CJK fonts installed).
+- Colour strategy with FS: flats in *pure* palette colours; gradients and intended blends
+  (ORANGE 235,120,18; SKY 130,160,220; dusk blues) dither nicely. AVOID muddy darks/greys
+  (e.g. 60,40,10 or 70,60,60): they become red/green/blue confetti. Use pure K plus
+  coloured lines instead.
+- Reflections: flip the band above the waterline in numpy, roll rows by a sine, darken
+  toward deep blue, then add ripple strokes and broken vertical streaks for lights.
+- Masked pattern fills (paste a pattern image through a polygon mask) give textiles.
+- Raymarched heightfields in numpy are cheap (~30 s). Camera first, lighting second.
+- `--palette a,b,c` exists for the occasional restricted piece; do the Bayer screen in the
+  generator in that case.
 
 ## Running threads
-- "Hard edges" (09-13, Robert Indiana) and "Dante / stelle" (09-14). Both could return.
-- 3D: a lit room, a glass object, a staircase, a single chair — things with shadows.
-- Charts and plates: star charts, tide tables, old technical drawings as art.
+- Done: "hard edges" (09-13), Dante/stelle (09-14), momijigari (10-11).
+- Ideas: a busy market or harbour scene; an illustrated map; a cutaway house / ship;
+  a 3D lit interior; a dense botanical or insect plate; a night city with lit windows;
+  a full-moon piece around 10-26 (Hunter's Moon).
 
 ## Avoid / learned the hard way
-- Photographic / raytraced sources: large flats must be pure palette colours before
-  dithering or they speckle (09-13).
-- Silhouettes under ~40px don't read. Double them (09-13).
-- Cellular automata / pixel patterns: cells ≥10px or it's static (09-13).
-- Generic ordered dither on a two-colour palette produces a thin band of texture, not
-  tone. Do the screen in the generator (09-14).
-- Draw stacked forms bottom-up so upper tiers overlap lower ones (09-14, Purgatory).
+- Over-minimalism (owner said so). Don't let a piece be a single shape and a field.
+- Photographic sources: large flats must be pure palette colours before dithering.
+- Silhouettes under ~40px (at 1×) don't read. Double them.
+- Cellular automata / pixel patterns: cells ≥10px.
+- Draw order: stacked forms bottom-up; hair and capes *behind* bodies.
+- Random recursive branches can hook oddly; reseed the RNG just before drawing them.
+- Leaves/labels in a grid: fix label rows first, then fit leaves above them.
 
 ## Recently used (last ~14 days; don't repeat too soon)
-- styles: hanga waves, pop signage, FS-dithered raytrace, linocut bands, 1-D automaton
-  (09-13); woodcut forest, isometric terraces, Bayer-screened raymarch, engraved
-  cosmological plate, star chart (09-14).
-- subjects: sunrise+boat, numeral 13, spheres still-life, geese, Rule 30 (09-13);
-  dark wood, Purgatory mountain, Inferno funnel, Ptolemaic spheres, Summer Triangle (09-14).
-- palettes used 09-14: K/G/W, Y/K/W, K/R, B/Y/W, K/W. Untouched combos: R/W, G/K,
-  B/W, R/Y, G/Y, R/B.
+- 10-11 styles: ukiyo-e landscape, herbarium plate, bonsai still-life before a gold screen,
+  shin-hanga dusk with reflections, torchlit Noh figure.
+- 10-11 subjects: maple gorge+pagoda+bridge, nine leaves, Deshojo bonsai, Heian dragon
+  boat, hannya demon. Motif: maple leaf. Lots of red/orange: tomorrow lean on another hue.
+- Older (09-13/14, now outside the window): hanga waves, pop numeral, raytraced spheres,
+  geese, Rule 30, Dante set.
