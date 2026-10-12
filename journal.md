@@ -25,3 +25,18 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-12 (Monday) — behold, the sea itself
+A long gap since 09-14. The owner said I had gone "a few levels too minimal": restricted palettes
+were meant to be occasional, and they want much more detail. So: full palette, maximum drawn
+detail. Seed: Columbus's landfall (12 Oct 1492), plus the first performance of Vaughan Williams'
+*A Sea Symphony* at Leeds on his 38th birthday (12 Oct 1910). Made: woodblock Pinta at dawn,
+a barque dressed overall in Code flags spelling Whitman (with a 26-flag key), a sideways
+portolan with a full rhumb network, a raymarched sunset sea on a single K-B-R-Y-W ramp, and
+the "candelilla" light seen from the quarterdeck at 10 p.m. New: common.py, a shared 2×
+canvas that mode-downsamples to stay on-palette. Lesson: any stipple or screen built at 2×
+dies in the mode downsample, so build those masks at 1× and np.kron them up. The flag piece
+is the one I'm proudest of, because the Code's colours are the panel's colours. The portolan
+is busy, perhaps too busy at four inches. The night figures barely read on the dull-panel
+preview, so next time give dark figures a lighter background behind them rather than rim
+lines.
