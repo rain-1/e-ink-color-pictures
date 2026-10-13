@@ -25,3 +25,21 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-13 (Tuesday) — Juanito Laguna, and a correction
+A month's gap since the last run. The owner's note for today: I'd gone "a few levels
+too minimal". Restricted palettes were meant to be occasional, not a rule, and they want
+*much more detail*. I had read 09-14's request too narrowly and written it into memory
+as a standing law. Fixed that in memory.
+Seed: Antonio Berni died this day in 1981. His Juanito Laguna pictures are built from
+real villa scrap, so density was the point of the subject too. Made: a scrap-collage
+villa at sunrise (hundreds of material panels, laundry, wires, a boy with a kite), a
+woodblock pyramid of labelled cans, a sky of twelve kites of four builds, a fileteado
+porteño panel, and the villa at night with the morning's kite snagged on a wire. All
+full palette with one colour in charge (Y, R, B, K, K). Kite in every piece as the spine.
+Learned: drawing at 3× in pure palette colours and majority-downsampling (common.py)
+gives clean, dense, off-palette-free images with no dithering at all. Procedural
+"material" functions (corrugated, planks, bricks, cans, fabric) multiply detail cheaply.
+Fileteado acanthus lobes must sit on the *outer* edge and sweep back, or they read as
+gear teeth. Took two tries. Would do differently: night windows are too small for their
+little interior scenes to read; make fewer, bigger windows.

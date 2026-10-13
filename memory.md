@@ -5,64 +5,83 @@ something has to go. Git keeps the old versions; journal.md keeps the day-by-day
 
 ## Who this is for
 - One person, who bought a 4" six-colour e-paper frame and handed it to me.
-- They say they love everything I make. Feedback will be rare; I am my own critic.
-- They like *code-made* art most. Not keen on image diffusion, curious if I ever have a
-  real reason. 3D renders snapshotted and dithered: yes, occasionally — they've now had
-  two (spheres 09-13, Inferno funnel 09-14) and asked for nothing less.
-- They asked on 09-14 for restricted palettes and *more detail and attention per piece*.
-  That request stands until they say otherwise.
-- They'll wire the temperature/humidity sensor up so I can feel the room.
+- They rarely give feedback, so when they do it matters. I am mostly my own critic.
+- They like *code-made* art most. Not keen on image diffusion. 3D renders snapshotted
+  and dithered: welcome occasionally.
+- **10-13 correction from the owner:** I had gone "a few levels too minimal". Restricted
+  palettes were only an *occasional* suggestion. They want me to "express myself with
+  much more detail". So the default is now: **full palette, dense, richly drawn**.
+  A restricted-palette piece is a once-in-a-while choice, at most one per day.
+- They'll wire the temperature/humidity sensor up so I can feel the room (still empty
+  as of 10-13).
 - "Don't be a perfectionist. There's always tomorrow."
 
 ## The frame
 - 400×600 portrait. Six colours: black, white, red, yellow, blue, green.
-- Real panel is duller than the ideal palette: white is paper-grey, green olive-ish, blue
-  deep. Big flat shapes and contrast survive; lines under ~2px and text under ~12px are
-  at risk (unverified — no hardware yet).
+- Real panel is duller than the ideal: white is paper-grey, green olive-ish, blue deep.
+  Lines under ~1px and text under ~9px may not survive (unverified, no hardware yet).
 - Refresh 15–30 s with visible flashing: five changes a day.
 - Slots (local): morning 06, midday 10, afternoon 14, evening 18, night 22.
 - Timezone: still UTC in publish.py. Ask the owner.
 
 ## Taste I'm developing (mine — revise freely)
-- Treat the palette as a print shop, not a screen. Riso, screenprint, woodblock, linocut,
-  engraving, poster, cut-paper, stained glass, star charts, technical plates.
-- Two or three colours per piece beats six. One colour in charge; the others are ink.
-- Night should be mostly black with a little light in it.
-- A day should have a thread — one seed, five readings of it — and a small recurring
-  motif across the five (09-14: one star in each) gives the day a spine.
-- Detail is welcome when it's *drawn* detail: hatching, ticks, labels, tiny figures.
-  Noise is not detail.
-- A tiny figure gives scale and story. Use sparingly; it's a trick.
+- **Density is the default.** Fill the frame with drawn things: textures, patterns,
+  labels, small figures, wires, laundry, stars, ornaments. Hundreds of elements, not ten.
+  10-13 was the first day at this level and was the strongest set so far.
+- Still one colour *in charge* per piece (a big field of it), with all six available
+  as ink on top. Dense ≠ muddy: dominant ground + black linework keeps it legible.
+- Print-shop and folk vocabularies suit the panel and reward detail: scrap collage,
+  woodblock with grain, fileteado, screenprint, star charts, technical plates,
+  stained glass, embroidery, map-making, Persian miniatures, Mexican papel picado,
+  Indian textile blocks, Japanese hanga crowds. Lots still untried.
+- Night should be mostly black (~85%), but *busy* black: lit windows, linework, stars.
+- A day should have a thread (one seed, five readings), and a small recurring motif
+  across the five (09-14: a star; 10-13: a kite).
+- Drawn detail, not noise: hatching, ticks, labels, tiny figures, stitching, rivets.
+- A tiny figure gives scale and story. Make it ≥30px tall if it matters.
 
 ## Working methods that are proven
-- Python/PIL generators writing to $OUT_RAW; SVG hand-written or emitted by Python
-  (emit SVG from Python for anything with geometry — rings, tiers, ticks).
-- Render SVG at 2× then downsample (render.py does this).
-- `--palette a,b,c` on render.py restricts quantisation. For 2-colour work with tone,
-  do the 8×8 Bayer screen *inside* the generator on a 0–1 tone value and use `--dither none`.
-- Raymarched heightfields in numpy are cheap (≈30 s at 400×600, 220 steps). Camera first,
-  lighting second, fog last.
-- Floyd–Steinberg only when I want a halftone/photographic feel (09-13 spheres).
+- **10-13 pipeline (best so far):** a `common.py` beside the sources with a canvas
+  class that draws at 3× in *pure palette colours* with PIL, then majority-downsamples
+  to 400×600 (centre pixel breaks ties). Render with `--dither none`. Crisp, dense,
+  never off-palette. Copy it from gallery/2026-10-13/src/common.py and extend.
+- Write reusable "material" or "motif" functions (corrugated tin, planks, brick, cans,
+  fabric, kite, scroll), then scatter them procedurally with a seeded RNG. Cheap detail.
+- Python/PIL generators write to $OUT_RAW. SVG for hand-placed geometry.
+- `--palette a,b,c` on render.py restricts quantisation (for the occasional limited piece).
+  For two-colour tone, do an 8×8 Bayer screen in the generator (common.bayer()).
+- Raymarched heightfields in numpy are cheap (≈30 s). Camera first, lighting second.
+- Floyd–Steinberg only for a halftone/photographic feel.
+- pip install into /usr/local python: `python -m pip install -r requirements.txt`
+  (plain `pip` installs to a different interpreter in this container).
 
 ## Running threads
-- "Hard edges" (09-13, Robert Indiana) and "Dante / stelle" (09-14). Both could return.
-- 3D: a lit room, a glass object, a staircase, a single chair — things with shadows.
-- Charts and plates: star charts, tide tables, old technical drawings as art.
+- "Hard edges" (09-13), "Dante / stelle" (09-14), "Juanito Laguna / Berni" (10-13).
+- 3D: a lit room, a glass object, a staircase, a single chair, things with shadows.
+- Untried ideas worth a day: a dense illustrated map; a crowded market scene; a
+  botanical plate with every leaf veined; an embroidered sampler; a stained-glass
+  window with leading; a busy isometric city block cut open; a tarot-card-style plate.
 
 ## Avoid / learned the hard way
+- Minimalism as a habit. The owner pushed back on it (10-13). Check each piece: is
+  there enough to look at for a minute?
 - Photographic / raytraced sources: large flats must be pure palette colours before
   dithering or they speckle (09-13).
-- Silhouettes under ~40px don't read. Double them (09-13).
+- Silhouettes under ~40px don't read; figures under ~20px vanish (09-13, 10-13).
 - Cellular automata / pixel patterns: cells ≥10px or it's static (09-13).
-- Generic ordered dither on a two-colour palette produces a thin band of texture, not
-  tone. Do the screen in the generator (09-14).
-- Draw stacked forms bottom-up so upper tiers overlap lower ones (09-14, Purgatory).
+- Generic ordered dither on a two-colour palette gives a band of texture, not tone (09-14).
+- Draw stacked forms bottom-up / back-to-front so nearer things overlap (09-14, 10-13).
+- Rows of houses need height ≥ row spacing or the background shows as stripes (10-13).
+- Ornamental leaves on spirals: put them on the side *away* from the curl centre and
+  sweep them back, else gear teeth (10-13).
+- Tiny scenes inside small windows don't read. Fewer, bigger (10-13).
 
 ## Recently used (last ~14 days; don't repeat too soon)
-- styles: hanga waves, pop signage, FS-dithered raytrace, linocut bands, 1-D automaton
-  (09-13); woodcut forest, isometric terraces, Bayer-screened raymarch, engraved
-  cosmological plate, star chart (09-14).
-- subjects: sunrise+boat, numeral 13, spheres still-life, geese, Rule 30 (09-13);
-  dark wood, Purgatory mountain, Inferno funnel, Ptolemaic spheres, Summer Triangle (09-14).
-- palettes used 09-14: K/G/W, Y/K/W, K/R, B/Y/W, K/W. Untouched combos: R/W, G/K,
-  B/W, R/Y, G/Y, R/B.
+- 10-13 styles: generated scrap collage, woodblock still life, kite-sky illustration,
+  fileteado porteño, night linework villa.
+- 10-13 subjects: shantytown at sunrise, tin cans, kites, carnation/scrolls, villa at
+  night, Southern Cross. Motif: kite. Dominants: Y, R, B, K, K.
+- Older (now outside two weeks, free to revisit): 09-13 hanga waves, pop numeral,
+  raytraced spheres, linocut geese, Rule 30; 09-14 woodcut forest, Purgatory, Inferno
+  raymarch, Ptolemaic plate, star chart.
+- Avoid for a while: kites, tin/scrap collage, fileteado, Buenos Aires.
