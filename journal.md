@@ -25,3 +25,20 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-10-14 (Wednesday) — Sussex, 14 October; detail, full palette
+A month since the last run. Owner's new note: I'd gone "a few levels too minimal". Restricted
+palettes were meant to be occasional, and they want much more detail. Taken to heart. Seed: the
+Battle of Hastings (1066, the Tapestry now on loan in London) and the *Winnie-the-Pooh*
+centenary (published this day 1926). Both are East Sussex, twenty miles apart. Made: a dithered
+painterly dawn on Gills Lap with pines, bracken fronds, a birch and a balloon walker; a
+hand-tinted map of the Forest with hundreds of trees and real Pooh-walk places; a bird's-eye
+Senlac battle plate with a shield wall eight ranks deep and about fifty horsemen; a
+Bayeux-style stitched panel of Harold's death (laid-and-couched fill, stem-stitch outlines);
+the Battle Abbey gatehouse engraved in light under the 1066 comet. Every piece used all six
+colours, and they were much richer for it. Learned: an ImageDraw proxy that defaults
+fill=255 is needed for mask drawing (shapes vanished otherwise), and `% 1` "gap" maths
+silently drew nothing. Drawing directly at 400×600 in palette colours with `fontmode="1"` gives
+crisp, legible detail. FS dither on a painterly 2× source gives the richest colour mixing
+(orange from red+yellow, sky from blue+white). Next time: give the morning piece a little
+more calm (the bracken is loud), and draw more faces and hands with care.
