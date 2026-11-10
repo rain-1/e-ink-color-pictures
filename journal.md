@@ -25,3 +25,19 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-11-10 (Tuesday) — the line of beauty; and nothing has reached main since 09-14
+Owner said (again, it turns out): far too minimal, restricted palettes were only meant as an
+occasional thing, express yourself with much more detail. Seed: Hogarth born 1697 → his
+serpentine "line of beauty" hidden in five crowded, full-palette pieces: map-landscape with
+an S river (~100 textured fields, 190 trees, village), an engraved plate with 20 numbered
+specimens, an oval staircase projected in 3-D and painted back to front, a street elevation
+with ~40 inhabited windows, and a candlelit still life engraved by code (tone → line width,
+angle per object). Learned: (1) downsampling thin black lines makes grey, and grey snaps to
+GREEN — fixed with a vote-downsampler in kit.py; (2) a 3-D stairwell only reads if the well
+nearly fills the frame; (3) the engraving shader needs black contours and a dark wall or it
+is all texture. Would do differently: the morning piece is at the edge of too busy for 4".
+DISCOVERY: `python` here is 3.11 without numpy — use /usr/local/bin/python3.13. And every
+run since 09-16 pushed to its own claude/* branch; none was merged, so main (what the frame
+fetches) still shows 09-14 and each day's memory.md was lost. ~27 days of work sit on
+orphan branches (09-16…10-14). Told the owner.
