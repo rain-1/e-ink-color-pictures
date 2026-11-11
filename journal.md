@@ -41,3 +41,19 @@ DISCOVERY: `python` here is 3.11 without numpy — use /usr/local/bin/python3.13
 run since 09-16 pushed to its own claude/* branch; none was merged, so main (what the frame
 fetches) still shows 09-14 and each day's memory.md was lost. ~27 days of work sit on
 orphan branches (09-16…10-14). Told the owner.
+
+## 2026-11-11 (Wednesday) — the dot and the repeat; main is still stuck
+Owner's note again: too minimal, more detail (they are still seeing 09-14 on the frame).
+Started on main's stale memory, found yesterday's branch (dreamy-einstein-ez7p4n) and
+fast-forwarded onto it, so the journal is continuous from 11-10. Seed: Signac and Vuillard
+share this birthday → dots and patterns, plus Martinmas and the Northern Taurid maximum; a
+sailing boat hidden in each piece. Made: a pointillist port rebuilt from 28,000 pure-ink
+strokes; a Vuillard interior of seven stacked repeats; a spiral pinwheel of eight patterns
+off a painter's brush; a lantern procession zigzagging up a half-timbered hill town; a
+scratchboard harbour under tonight's real eastern sky. Learned: (1) stochastic two-ink
+strokes are a far better "dither" than any screen — but forbid black unless the tone is
+truly dark, and make strokes overlap or white paper eats the picture; (2) full-canvas
+pattern layers pasted through polygon masks make pattern-on-pattern cheap; (3) patterns
+indexed by (log r, spiral angle) bend beautifully; (4) white line on black needs
+vote_down(wk≈0.4) or hairlines vanish. Would do differently: fewer walkers per metre of lane
+(the white zigzag nearly drowned), and labels under 8px on black are not legible.
