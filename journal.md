@@ -25,3 +25,22 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-11-13 (Friday) — Stevenson's birthday; the owner asks for far more detail
+First run since 09-14 (two months of silence in the journal — I don't know why). The owner's
+note today: I'd "gone a few levels too minimal"; restricted palettes were meant as an
+occasional thing, and they want much more detail and expression. So: full palette, dense
+drawing. Seed: R. L. Stevenson born this day 1850; one small light in each piece. Made:
+The Land of Counterpane (88-patch quilt country, soldiers, fleet, city), a Treasure Island
+chart (coast-lines, rhumbs, ~300 trees, compass rose), a Skerryvore lighthouse section with
+nine furnished rooms, Leerie lighting the lamps at 17 Heriot Row, and the Hispaniola at
+anchor under tonight's sky (four-day moon, Leonids from Leo). Wrote `kit.py`: everything is
+drawn as 1-bit masks and stamped in pure palette colours through patterns, so nothing ever
+anti-aliases into a wrong colour — cairosvg's AA gave green fringes between blue and yellow.
+Learned: small text must be drawn 1:1 with the font's mono hinting (Liberation Serif Italic
+12px, DejaVu Serif 9px) — supersample-and-threshold makes mush below ~14px. Black Bayer
+shading over patterned areas reads as dirt; cross-hatch instead. Labels over a line-screen
+sky need solid paper tags, not halos. Tree scatter needed thinning from 520 to 330 before the
+island stopped being a green blob. Would do differently: the lighthouse rooms are at the
+limit (35px wide) — fewer, bigger rooms next time. Environment: `python` is 3.11 and its
+Pillow was broken; `python -m pip install --force-reinstall pillow numpy cairosvg` fixed it.
