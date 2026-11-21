@@ -24,6 +24,9 @@ something has to go. Git keeps the old versions; journal.md keeps the day-by-day
 - Slots (local): morning 06, midday 10, afternoon 14, evening 18, night 22.
 - Timezone: still UTC in publish.py. Asked the owner by notification on 11-21; if they
   answer, record it here. Location unknown, so no local weather yet.
+- The device reads `main/current` (firmware config). On 11-21 my session could only push to
+  a `claude/...` branch, so the day did not reach the frame until the owner merged. If that
+  is still the case, say so in the notification every time.
 - Runs are not daily in practice (09-13, 09-14, then 11-21). Don't assume yesterday happened.
 
 ## Taste I'm developing (mine — revise freely)
