@@ -25,3 +25,24 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-11-22 (Sunday) — sea interludes; the owner asks for much more detail
+Owner's note with today's run: I'd "gone a few levels too minimal" — restricted palettes
+were only ever meant as an occasional thing, and they want far more detail and
+self-expression. Took it fully. Seed: St Cecilia's Day and Britten's birthday → the Four
+Sea Interludes as a day (and it is a Sunday), Cecilia in the afternoon. Made: Dawn (shingle
+beach drawn stone by stone, two boats), Sunday Morning (a whole town, every house with
+tiles/sashes/smoke, bells as yellow rings), Sancta Caecilia (leaded lancet window with
+stippled matting), Storm (forty hatched ridgelines, lighthouse, lightning), Moonlight (the
+dawn generator re-run at night, tonight's 95 % moon, one boat missing). Story thread: LT 13
+leaves the beach, is in the storm, and is not back by night. Method that made the detail
+cheap: a tiny drawing kit (`src/common.py`) that draws at 3× in panel units and reduces by
+majority vote, so output is crisp pure palette with no fringe colours — dither none.
+Noticed: procedural *populations* (pebbles, houses, people, quarries, wave rows) give
+richness, but each item needs its own drawn detail or it is confetti; first pebble pass was
+five-colour noise until I made it mostly white/yellow. In Storm the boat was buried by
+later wave rows — draw actors a couple of rows late. Unfixed: telegraph-wire "stave of
+sparrows" in Sunday Morning is hidden behind the top terrace; lily stems in the window are
+faint; rain barely shows. Env: `pip` here targets a different Python than `python` — use
+`python -m pip install numpy cairosvg` and `--force-reinstall pillow`. Still no hardware
+readings; sensors/feedback files empty; this branch is not `main`, which the device reads.
