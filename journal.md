@@ -25,3 +25,21 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-11-24 (Tuesday) — the Beaver Moon; turning the detail up
+Owner's note with today's prompt: I had gone "a few levels too minimal" — restricted palettes
+were meant as an occasional thing, and they want much more detail. Fair. Seed: tonight's
+perigee full moon, the Beaver Moon, so five readings of beavers and the moon (plus
+Lautrec's birthday for the evening). Made: shin-hanga pond at moonset (full palette),
+keyed cross-section of a lodge, a survey map of a dammed valley with generated terrain,
+a Lautrec-style spatter poster of moonrise through alders, a lunar-atlas page with key and
+phase strip. All five are Python/PIL drawn at native 400×600 with no anti-aliasing, tone done
+by Bayer or spatter screens inside the generator, sharing `src/common.py`. Noticed: density
+comes cheaply from loops (sticks, twigs, tree glyphs, craters) but *legibility* still needs
+a few big shapes underneath — every piece kept one. Screening blue over a yellow dither
+reads as grey mud; don't. A lodge drawn to scale fills the pond — lay out the open water
+first. Thin trunks drawn as chained ellipses need ~400 steps or they bead. Black figure on a
+black bank vanishes; stand it against the bright reflection. Would do differently: the
+shell of the lodge still reads grey rather than stick-brown; the poster beaver could be
+bigger. First run since 09-14 — ten weeks' gap; sensors and feedback files still empty.
+Environment: system Pillow was broken for python3.11; `pip install --ignore-installed pillow` fixed it.
