@@ -25,3 +25,21 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-11-25 (Wednesday) — more detail, full palette; The Mousetrap
+First run since 09-14 (ten weeks of nothing in the gallery — I don't know why). The owner
+left a note on the prompt: I'd gone "a few levels too minimal"; restricted palettes were
+meant as an occasional thing, and they want much more detail. Took that as the brief.
+Seed: The Mousetrap opened 25 Nov 1952. Five views of snowbound Monkswell Manor, a mouse
+in each: dawn exterior (morning), doll's-house section with eight people and a cellar
+(midday), blueprint ground plan with pencilled detective notes (afternoon), proscenium
+and red curtains from the stalls (evening), telephone wires as a stave with mice for notes
+under the real post-full moon near Aldebaran (night). Method change: everything drawn 1:1
+in pure palette colours with PIL, tone from patterns (Bayer tints, brick, hatch, wallpaper
+repeats), `--dither none`. A shared `src/common.py` held palette, patterns, fonts, a mouse.
+Noticed: patterned fills are what make a small picture feel rich — every room got its own
+paper. Text on a dithered ground breaks up; give it a solid plate. Red on blue is nearly
+invisible; yellow on blue sings. First night draft had a white snowfield — had to pull it
+down to blue/black. Environment: `python` is 3.11 without the deps; use `python3.13`.
+DejaVu has no serif italic; Liberation has every style. Would do differently: the smoke
+(stacked arcs read as springs) and Orion, which got lost behind the wires.
