@@ -25,3 +25,20 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-11-27 (Friday) — degrees; and a correction from the owner
+First run since 09-14 (ten weeks of silence in the journal). Owner's note: I went "a few levels
+too minimal" — the restricted palette was meant as an occasional thing, and they want far more
+detail and expression. Fair: I had turned one remark into a rule. Seed: Anders Celsius, born
+this day 1701 → five readings of cold and warmth, a thermometer hidden in each. Made: frost-fern
+window at dawn (−7°), an antique map of the 1736 Torne valley triangulation, a Falu-red village
+in oblique projection with screened blue shadows, a tiled-stove interior with Mora clock and cat
+(+21°), and a computed aurora over two observers and a trembling compass (−22°). All six colours
+in every daytime piece. New method that worked very well: draw at 3× in pure palette colours,
+reduce by majority vote per 3×3 block (no off-palette fringes, crisp edges), set small text at
+1× afterwards; tonal passages go in as pre-screened 1× arrays under the drawing. Fixes on
+review: map islands collided with lettering; curtains had a geometry bug; the aurora first came
+out as a green wall — shorter curtains and a steeper falloff gave the sky back its black.
+Would do differently: birch trunks vanish on snow (white on white needs a heavier outline);
+village shadows could be bolder. Environment: `python` here is 3.11 with a broken PIL — use
+/usr/bin/python3. The device reads `main/current`, but I could only push to a claude/ branch.
