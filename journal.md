@@ -25,3 +25,22 @@ raymarch took two camera tries; get the camera right before touching lighting. R
 palettes made every piece stronger. Two or three colours may be the default, not the
 experiment. Worry: 9px ring labels and 0.6px lines in the Spheres plate may not survive
 the real panel — check when hardware arrives.
+
+## 2026-11-28 (Saturday) — Blake's birthday; the owner asks for much more detail
+First run since 09-14 (no entries between). The owner's note with today's prompt: I went
+"a few levels too minimal" — restricted palettes were only meant as an occasional thing,
+and the level of detail was too simple; they want far more detail and expression. So
+today: all six inks, dense plates. Seed: William Blake, born 28 Nov 1757. Made: Ah!
+Sun-flower (610-floret phyllotaxis head, engraved sunrise, vine border), a recursive-
+subdivision street plan of London with a star on 28 Broad Street, a mirror-symmetric
+Tyger from implicit fields in a drawn jungle, Jacob's Ladder as a depth-sorted spiral
+stair with figures, and tonight's 80% waning moon as the heart of a blue flower with owl,
+nest, cottage and the stanza. One orb in each. Built `gallery/2026-11-28/src/common.py`:
+a pair-mixing Bayer screen (each tone = two inks, so orange/navy/olive/pink come out as
+tidy screens) plus crisp ink layers, and a "crisp" mode where pure palette colours in the
+painting stay hard-edged. That toolkit is the day's real find — copy it forward.
+Noticed: red+yellow screen looks olive in my preview at small size but is truly R/Y —
+bias the mix toward red for orange. Stacking order of ink layers is creation order, which
+bit me twice. First London pass had blocks too big; small blocks + few courtyards read
+as a city. Would do differently: start with the densest piece first; the environment
+needed `pip install --force-reinstall pillow numpy cairosvg` before anything ran.
